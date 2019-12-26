@@ -1,0 +1,53 @@
+$ docker build -t backend_example .
+Sending build context to Docker daemon  413.7kB
+Step 1/8 : FROM ubuntu
+ ---> 549b9b86cb8d
+Step 2/8 : RUN apt-get update  && apt-get install -y curl  && curl -sL https://deb.nodesource.com/setup_10.x | bash  && apt install -y nodejs
+ ---> Using cache
+ ---> 084d7122c694
+Step 3/8 : COPY ./backend-example-docker /app
+ ---> a93fb947a5e0
+Step 4/8 : WORKDIR /app
+ ---> Running in 4277fb09a9ff
+Removing intermediate container 4277fb09a9ff
+ ---> c0951cf63f9a
+Step 5/8 : RUN npm install
+ ---> Running in c7acc157457a
+
+> nodemon@1.18.9 postinstall /app/node_modules/nodemon
+> node bin/postinstall || exit 0
+
+Love nodemon? You can now support the project via the open collective:
+ > https://opencollective.com/nodemon/donate
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 606 packages from 458 contributors and audited 5317 packages in 12.365s
+found 273 vulnerabilities (1 moderate, 272 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+Removing intermediate container c7acc157457a
+ ---> f278151b2d31
+Step 6/8 : EXPOSE 8000
+ ---> Running in fa13f6aa021c
+Removing intermediate container fa13f6aa021c
+ ---> e0dfff521d94
+Step 7/8 : WORKDIR .
+ ---> Running in 2318b78320a6
+Removing intermediate container 2318b78320a6
+ ---> a72f81580069
+Step 8/8 : CMD ["npm", "start"]
+ ---> Running in 1ee351b6753f
+Removing intermediate container 1ee351b6753f
+ ---> c4ce5ddda6d6
+Successfully built c4ce5ddda6d6
+Successfully tagged backend_example:latest
+
+
+$ docker run --mount type=bind,source="$(pwd)"/backend-example-docker/logs.txt,target=/app/logs.txt -p 8000:8000 backend_example
+
+> backend-example-docker@1.0.0 start /app
+> cross-env NODE_ENV=production node index.js
+
+Browserslist: caniuse-lite is outdated. Please run next command `npm update caniuse-lite browserslist`
+Started on port 8000

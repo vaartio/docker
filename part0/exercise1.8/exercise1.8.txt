@@ -1,0 +1,6 @@
+$ docker run --mount type=bind,source="$(pwd)"/exercise1.8/logs.txt,target=/usr/app/logs.txt  devopsdockeruh/first_volume_exercise
+(node:1) ExperimentalWarning: The fs.promises API is experimental
+Wrote to file /usr/app/logs.txt
+Wrote to file /usr/app/logs.txt
+Wrote to file /usr/app/logs.txt
+Wrote to file /usr/app/logs.txt

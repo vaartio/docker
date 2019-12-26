@@ -1,0 +1,11 @@
+docker run -d -p 80:80 devopsdockeruh/ports_exercise
+
+http://localhost
+Ports configured correctly!!
+
+$ docker ps
+CONTAINER ID        IMAGE                           COMMAND             CREATED              STATUS              PORTS                NAMES
+1276ebcfec47        devopsdockeruh/ports_exercise   "npm start"         About a minute ago   Up About a minute   0.0.0.0:80->80/tcp   zealous_wozniak
+
+$ docker stop 1276ebcfec47
+1276ebcfec47

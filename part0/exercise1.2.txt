@@ -1,0 +1,31 @@
+$ docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                     PORTS                                         NAMES
+fcac443cb290        nginx                 "nginx -g 'daemon of…"   4 minutes ago       Up 4 minutes               0.0.0.0:82->80/tcp                            mynginx3
+747a094e2094        nginx                 "nginx -g 'daemon of…"   5 minutes ago       Exited (0) 4 minutes ago                                                 mynginx2
+d340d21984a8        nginx                 "nginx -g 'daemon of…"   5 minutes ago       Exited (0) 4 minutes ago                                                 mynginx1
+
+$ docker stop fcac443cb290
+fcac443cb290
+
+$ docker rm fcac443cb290 747a094e2094 d340d21984a8
+fcac443cb290
+747a094e2094
+d340d21984a8
+
+$ docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+nginx                 latest              231d40e811cd        4 weeks ago         126MB
+
+$ docker rmi 231d40e811cd
+Untagged: nginx:latest
+Untagged: nginx@sha256:50cf965a6e08ec5784009d0fccb380fc479826b6e0e65684d9879170a9df8566
+Deleted: sha256:231d40e811cd970168fb0c4770f2161aa30b9ba6fe8e68527504df69643aa145
+Deleted: sha256:dc8adf8fa0fc82a56c32efac9d0da5f84153888317c88ab55123d9e71777bc62
+Deleted: sha256:77fcff986d3b13762e4777046b9210a109fda20cb261bd3bbe5d7161d4e73c8e
+Deleted: sha256:831c5620387fb9efec59fc82a42b948546c6be601e3ab34a87108ecf852aa15f
+
+$ docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                     PORTS                                         NAMES
+
+$ docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE

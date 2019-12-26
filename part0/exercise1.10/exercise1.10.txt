@@ -1,0 +1,136 @@
+$ docker build -t frontend_example .
+Sending build context to Docker daemon    639kB
+Step 1/8 : FROM ubuntu
+ ---> 549b9b86cb8d
+Step 2/8 : RUN apt-get update  && apt-get install -y curl  && curl -sL https://deb.nodesource.com/setup_10.x | bash  && apt install -y nodejs
+ ---> Using cache
+ ---> ee482d22b251
+Step 3/8 : COPY ./frontend-example-docker /app
+ ---> Using cache
+ ---> e989ad676967
+Step 4/8 : WORKDIR /app
+ ---> Using cache
+ ---> 79037463a71e
+Step 5/8 : RUN npm install
+ ---> Using cache
+ ---> 5f68f57b0232
+Step 6/8 : EXPOSE 5000
+ ---> Using cache
+ ---> 2a18b350f357
+Step 7/8 : ENV API_URL=/api
+ ---> Running in d22e86e5a0a9
+Removing intermediate container d22e86e5a0a9
+ ---> 92985d58768d
+Step 8/8 : CMD ["sh", "-c", "API_URL=${API_URL} npm start"]
+ ---> Running in 9cd0e3977702
+Removing intermediate container 9cd0e3977702
+ ---> 59caf0a10078
+Successfully built 59caf0a10078
+Successfully tagged frontend_example:latest
+
+
+$ docker run -p 5000:5000 frontend_example
+
+> frontend-example-docker@1.0.0 start /app
+> webpack --mode production && serve -s -l 5000 dist
+
+Browserslist: caniuse-lite is outdated. Please run next command `npm update caniuse-lite browserslist`
+Browserslist: caniuse-lite is outdated. Please run next command `npm update`
+Hash: 24b8becdc440237275de
+Version: webpack 4.29.6
+Time: 18924ms
+Built at: 12/26/2019 1:48:50 PM
+                                 Asset       Size  Chunks                    Chunk Names
+0ab54153eeeca0ce03978cc463b257f7.woff2   39.2 KiB          [emitted]
+  13db00b7a34fee4d819ab7f9838cc428.eot   96.3 KiB          [emitted]
+  701ae6abd4719e9c2ada3535a497b341.eot   30.4 KiB          [emitted]
+  82f60bd0b94a1ed68b1e6e309ce2e8c3.svg    105 KiB          [emitted]
+  8e3c7f5520f5ae906c6cf6d7f3ddcd19.eot    104 KiB          [emitted]
+  962a1bf31c081691065fe333d9fa8105.svg    382 KiB          [emitted]  [big]
+  9c74e172f87984c48ddf5c8108cabe67.png   27.5 KiB          [emitted]
+ a046592bac8f2fd96e994733faf3858c.woff   62.2 KiB          [emitted]
+  a1a749e89f578a49306ec2b055c073da.svg    496 KiB          [emitted]  [big]
+  a3e2211dddcba197b5bbf2aa9d5d9a9a.svg   3.19 KiB          [emitted]
+  ad97afd3337e8cda302d10ff5a4026b8.ttf   30.2 KiB          [emitted]
+  b87b9ba532ace76ae9f6edfe9f72ded2.ttf    103 KiB          [emitted]
+  bff6c47a9da5c7cfa2e8a552e2df3a78.svg    3.2 KiB          [emitted]
+  c5ebe0b32dc1b5cc449a76c4204d13bb.ttf   96.1 KiB          [emitted]
+cd6c777f1945164224dee082abaea03a.woff2     12 KiB          [emitted]
+e8c322de9658cbeb8a774b6624167c2c.woff2   53.2 KiB          [emitted]
+ ef60a4f6c25ef7f39f2d25a748dbecfe.woff   14.4 KiB          [emitted]
+ faff92145777a3cbaf8e7367b4807987.woff   49.3 KiB          [emitted]
+                            index.html  454 bytes          [emitted]
+                              main.css  127 bytes       0  [emitted]         main
+                               main.js   19.1 KiB       0  [emitted]         main
+                    vendors~main-1.css    602 KiB       1  [emitted]  [big]  vendors~main
+                       vendors~main.js    328 KiB       1  [emitted]  [big]  vendors~main
+Entrypoint main [big] = vendors~main-1.css vendors~main.js main.css main.js
+  [7] ./node_modules/semantic-ui-react/dist/es/lib/index.js + 1 modules 2.94 KiB {1} [built]
+      |    2 modules
+ [51] ./node_modules/semantic-ui-react/dist/es/elements/Icon/Icon.js + 1 modules 6.22 KiB {1} [built]
+      |    2 modules
+ [80] ./node_modules/react-redux/es/index.js + 19 modules 36.2 KiB {1} [built]
+      |    20 modules
+ [93] ./node_modules/semantic-ui-react/dist/es/elements/Label/Label.js + 2 modules 10.6 KiB {1} [built]
+      |    3 modules
+ [94] (webpack)/buildin/global.js 472 bytes {1} [built]
+[246] ./src/assets/toscalogo_color.svg 82 bytes {0} [built]
+[247] ./src/assets/toscalogo_grayscale.svg 82 bytes {0} [built]
+[266] multi @babel/polyfill ./src 40 bytes {0} [built]
+[446] (webpack)/buildin/harmony-module.js 573 bytes {1} [built]
+[448] ./src/assets/custom.css 39 bytes {0} [built]
+[585] ./src/index.js + 18 modules 37.8 KiB {0} [built]
+      | ./src/index.js 569 bytes [built]
+      | ./src/util/store.js 481 bytes [built]
+      | ./util/common.js 117 bytes [built]
+      | ./src/util/apiConnection.js 4.7 KiB [built]
+      | ./src/util/redux/index.js 219 bytes [built]
+      | ./src/util/redux/messageReducer.js 1.76 KiB [built]
+      | ./src/util/redux/simpleReducer.js 1.47 KiB [built]
+      | ./src/util/common.js 221 bytes [built]
+      |     + 11 hidden modules
+[586] ./node_modules/semantic-ui-react/dist/es/elements/Button/Button.js + 3 modules 17.7 KiB {1} [built]
+      |    4 modules
+[594] ./node_modules/react-router-dom/es/BrowserRouter.js + 12 modules 41 KiB {1} [built]
+      |    13 modules
+[596] ./node_modules/react-router-dom/es/Switch.js + 1 modules 3.35 KiB {1} [built]
+      |    2 modules
+[597] ./node_modules/react-router-dom/es/Route.js + 1 modules 5.9 KiB {1} [built]
+      |    2 modules
+    + 971 hidden modules
+
+WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets:
+  962a1bf31c081691065fe333d9fa8105.svg (382 KiB)
+  a1a749e89f578a49306ec2b055c073da.svg (496 KiB)
+  vendors~main-1.css (602 KiB)
+  vendors~main.js (328 KiB)
+
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  main (949 KiB)
+      vendors~main-1.css
+      vendors~main.js
+      main.css
+      main.js
+
+
+WARNING in webpack performance recommendations:
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+Child html-webpack-plugin for "index.html":
+     1 asset
+    Entrypoint undefined = index.html
+    [2] (webpack)/buildin/global.js 472 bytes {0} [built]
+    [3] (webpack)/buildin/module.js 497 bytes {0} [built]
+        + 2 hidden modules
+Child mini-css-extract-plugin node_modules/css-loader/index.js!node_modules/semantic-ui-css/semantic.min.css:
+    Entrypoint mini-css-extract-plugin = *
+       19 modules
+Child mini-css-extract-plugin node_modules/css-loader/index.js!src/assets/custom.css:
+    Entrypoint mini-css-extract-plugin = *
+    [0] ./node_modules/css-loader!./src/assets/custom.css 340 bytes {0} [built]
+        + 1 hidden module
+UPDATE AVAILABLE The latest version of `serve` is 11.2.0
+INFO: Accepting connections at http://localhost:5000

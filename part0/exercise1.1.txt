@@ -1,0 +1,31 @@
+$ docker run --name mynginx1 -p 80:80 -d nginx
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+000eee12ec04: Pull complete
+eb22865337de: Pull complete
+bee5d581ef8b: Pull complete
+Digest: sha256:50cf965a6e08ec5784009d0fccb380fc479826b6e0e65684d9879170a9df8566
+Status: Downloaded newer image for nginx:latest
+d340d21984a828d11c1893375e0dc94cbafe5a5c03414d56feb37770a5bf52a7
+$ docker run --name mynginx2 -p 81:80 -d nginx
+747a094e2094c39fbf5577b5bb941968257fca51f9419f2569c2e269f5651e17
+$ docker run --name mynginx3 -p 82:80 -d nginx
+fcac443cb2900ab7a126a4bccb12e09a1693a55e8d2b3d44924024345e20b637
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+fcac443cb290        nginx               "nginx -g 'daemon of…"   7 seconds ago       Up 6 seconds        0.0.0.0:82->80/tcp   mynginx3
+747a094e2094        nginx               "nginx -g 'daemon of…"   14 seconds ago      Up 13 seconds       0.0.0.0:81->80/tcp   mynginx2
+d340d21984a8        nginx               "nginx -g 'daemon of…"   25 seconds ago      Up 24 seconds       0.0.0.0:80->80/tcp   mynginx1
+$ docker stop d340d21984a8
+d340d21984a8
+$ docker stop 747a094e2094
+747a094e2094
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+fcac443cb290        nginx               "nginx -g 'daemon of…"   28 seconds ago      Up 27 seconds       0.0.0.0:82->80/tcp   mynginx3
+$ docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED              STATUS                      PORTS                                         NAMES
+fcac443cb290        nginx                 "nginx -g 'daemon of…"   48 seconds ago       Up 47 seconds               0.0.0.0:82->80/tcp                            mynginx3
+747a094e2094        nginx                 "nginx -g 'daemon of…"   55 seconds ago       Exited (0) 24 seconds ago                                                 mynginx2
+d340d21984a8        nginx                 "nginx -g 'daemon of…"   About a minute ago   Exited (0) 28 seconds ago                                                 mynginx1
+
