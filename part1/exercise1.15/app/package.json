@@ -1,0 +1,17 @@
+{
+  "name": "user-agent-shower",
+  "version": "1.0.0",
+  "description": "This project prints your user agent information on the screen.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
