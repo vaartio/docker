@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  frontend:
+    image: frontend_example
+    ports:
+      - 5000:5000
+    environment:
+      API_URL: http://localhost:8000
+  backend:
+    image: backend_example
+    ports:
+      - 8000:8000
+    environment:
+      FRONT_URL: http://localhost:5000
+      REDIS: redis-cache
+      DB_USERNAME: dbuser
+      DB_PASSWORD: dbpass
+      DB_NAME: mydb
+      DB_HOST: database
+    depends_on:
+      - database
+  redis-cache:
+    image: redis:latest
+  database:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: dbpass
+      POSTGRES_DB: mydb
+    ports:
+      - 5432:5432
