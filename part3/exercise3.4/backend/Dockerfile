@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:10.18.0-alpine3.11
 
 COPY ./backend-example-docker /app
 
