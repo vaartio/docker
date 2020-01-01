@@ -1,0 +1,9 @@
+$ docker pull taskinen/yle-dl
+$ docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+taskinen/yle-dl       latest              b97796e41c16        5 months ago        311MB
+
+After optimization:
+
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+vaartio/yle-dl        latest              7bb4cacd972b        24 seconds ago      300MB
