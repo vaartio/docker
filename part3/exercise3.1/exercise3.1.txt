@@ -1,0 +1,14 @@
+$ docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+backend_example       latest              8995c4fb0bba        5 days ago          285MB
+frontend_example      latest              59caf0a10078        5 days ago          382MB
+
+After optimization:
+
+$ docker build -t backend_example -f Dockerfile-backend .
+$ docker build -t frontend_example -f Dockerfile-frontend .
+
+$ docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+backend_example       latest              f3bf29b87191        5 seconds ago       255MB
+frontend_example      latest              7efc56ab3b6b        3 seconds ago       351MB
